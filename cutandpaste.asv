@@ -75,9 +75,10 @@ figure; montage({im_bg, im_obj, mask_s, result1});
 
 
 %%%%% your own images
-im_bg = im2double(imread('..'));        % background image
-im_obj = im2double(imread('..'));       % source image
-
+im_bg = im2double(imread('https://raw.githubusercontent.com/Fletch235/imagesCOMP572/main/mountain.jpg'));        % background image
+im_obj = im2double(imread('https://raw.githubusercontent.com/Fletch235/imagesCOMP572/main/man.jpg'));       % source image
+%[poly_x, poly_y] = getPolygonForMask(im_obj);
+%[center_x, bottom_y] = getBottomCenterLoc(im_bg);
 % % Get source region mask (extracted object) from the user
 % %  First draw a polygon on the source image for applying the mask
 
@@ -85,8 +86,8 @@ im_obj = im2double(imread('..'));       % source image
 disp("Copy the values of the vectors poly_x and poly_y from the " + ...
     "Command Window below and hard code them inside your code for " + ...
     "submission via the Grader website.");
-poly_x        % display x coords of polygon
-poly_y        % display y coords of polygon
+poly_x  = [171.5490	107.6444	187.1853	275.5640	259.9278	168.8297]     % display x coords of polygon
+poly_y   =[3.924257493188011e+02	3.128848773841962e+02	93.297683923705733	1.300088555858310e+02	3.897064032697548e+02	3.951450953678474e+02]     % display y coords of polygon
 % Once you have these coordinates, comment out the call to getPolygonForMask() 
 % and hard code the coordinates instead.
 
@@ -125,12 +126,8 @@ figure; montage({im_bg, im_obj, mask_s, result2});
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 function im_cut_and_paste = cut_and_paste(im_bg, im_s, mask_s)
-    size(im_bg)
-    size(im_s)
-    size(mask_s)
-    im_cut_and_paste = im_bg;
-    im_cut_and_paste(~mask_s) = im_s;
-    im_cut_and_paste = bsxfun(@times,)
+
+    im_cut_and_paste = bsxfun(@times,im_s,cast(mask_s,class(im_s)))+bsxfun(@times,im_bg,cast(1-mask_s,class(im_bg)));
 
 end
 

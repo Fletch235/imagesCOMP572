@@ -75,18 +75,19 @@ figure; montage({im_bg, im_obj, mask_s, result1});
 
 
 %%%%% your own images
-im_bg = im2double(imread('https://raw.githubusercontent.com/Fletch235/imagesCOMP572/main/im1.jpg'));        % background image
-im_obj = im2double(imread('..'));       % source image
-
+im_bg = im2double(imread('https://raw.githubusercontent.com/Fletch235/imagesCOMP572/main/mountain.jpg'));        % background image
+im_obj = im2double(imread('https://raw.githubusercontent.com/Fletch235/imagesCOMP572/main/man.jpg'));       % source image
+%[poly_x, poly_y] = getPolygonForMask(im_obj);
+%[center_x, bottom_y] = getBottomCenterLoc(im_bg);
 % % Get source region mask (extracted object) from the user
 % %  First draw a polygon on the source image for applying the mask
 
-[poly_x, poly_y] = getPolygonForMask(im_obj);
+%[poly_x, poly_y] = getPolygonForMask(im_obj);
 disp("Copy the values of the vectors poly_x and poly_y from the " + ...
     "Command Window below and hard code them inside your code for " + ...
     "submission via the Grader website.");
-poly_x        % display x coords of polygon
-poly_y        % display y coords of polygon
+poly_x  = [171.5490	107.6444	187.1853	275.5640	259.9278	168.8297];     % display x coords of polygon
+poly_y   =[3.924257493188011e+02	3.128848773841962e+02	93.297683923705733	1.300088555858310e+02	3.897064032697548e+02	3.951450953678474e+02];     % display y coords of polygon
 % Once you have these coordinates, comment out the call to getPolygonForMask() 
 % and hard code the coordinates instead.
 
@@ -99,8 +100,8 @@ objmask = poly2mask(poly_x, poly_y, size(im_obj, 1), size(im_obj, 2));
 disp("Copy the values of center_x and bottom_y from the " + ...
     "Command Window below and hard code them inside your code for " + ...
     "submission via the Grader website.");
-center_x        % display x coord where center of object should be placed
-bottom_y        % display y coord where bottom of object should be placed
+center_x   =5.561948228882833e+02;     % display x coord where center of object should be placed
+bottom_y   =4.394645776566757e+02;     % display y coord where bottom of object should be placed
 % Once you have these coordinates, comment out the call to getBottomCenterLoc()
 % and hard code the coordinates instead.
 

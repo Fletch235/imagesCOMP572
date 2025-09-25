@@ -35,8 +35,8 @@ figure; montage({im_bg, im_obj, mask_s, result1});
 
 
 %%%%% your own images
-%im_bg = im2double(imread('..'));        % background image
-%im_obj = im2double(imread('..'));       % source image
+%im_bg = im2double(imread('https://raw.githubusercontent.com/Fletch235/imagesCOMP572/main/mountain.jpg'));        % background image
+%im_obj = im2double(imread('https://raw.githubusercontent.com/Fletch235/imagesCOMP572/main/man.jpg'));       % source image
 %poly_x = ..
 %poly_y = ..
 objmask = poly2mask(poly_x, poly_y, size(im_obj, 1), size(im_obj, 2));

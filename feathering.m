@@ -37,11 +37,11 @@ figure; montage({im_bg, im_obj, mask_s, result1});
 %%%%% your own images
 im_bg = im2double(imread('..'));        % background image
 im_obj = im2double(imread('..'));       % source image
-%poly_x = ..
-%poly_y = ..
+poly_x  = [171.5490	107.6444	187.1853	275.5640	259.9278	168.8297];     % display x coords of polygon
+poly_y   =[3.924257493188011e+02	3.128848773841962e+02	93.297683923705733	1.300088555858310e+02	3.897064032697548e+02	3.951450953678474e+02];    
 objmask = poly2mask(poly_x, poly_y, size(im_obj, 1), size(im_obj, 2));
-%center_x = ..
-%bottom_y = ..
+center_x   =5.561948228882833e+02;     % display x coord where center of object should be placed
+bottom_y   =4.394645776566757e+02; 
 padding = 64;   % You may want to play with this parameter
 [im_s, mask_s] = alignSource(im_obj, objmask, im_bg, center_x, bottom_y, padding);
 mask_s = im2double(mask_s);
