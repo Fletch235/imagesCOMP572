@@ -35,13 +35,13 @@ figure; montage({im_bg, im_obj, mask_s, result1});
 
 
 %%%%% your own images
-im_bg = im2double(imread('..'));        % background image
-im_obj = im2double(imread('..'));       % source image
-poly_x  = [171.5490	107.6444	187.1853	275.5640	259.9278	168.8297];     % display x coords of polygon
-poly_y   =[3.924257493188011e+02	3.128848773841962e+02	93.297683923705733	1.300088555858310e+02	3.897064032697548e+02	3.951450953678474e+02];    
+im_bg = im2double(imresize(imread('https://raw.githubusercontent.com/Fletch235/imagesCOMP572/main/wave.jpg'),0.5));        % background image
+im_obj = im2double(imread('https://raw.githubusercontent.com/Fletch235/imagesCOMP572/main/dolphin.jpg'));       % source image
+poly_x   =[81.456403269754702	65.694822888283312	1.856198910081744e+02	5.762329700272481e+02	6.824523160762946e+02	6.653201634877387e+02	3.398092643051772e+02	1.513555858310626e+02	67.750681198910002	67.750681198910002];     % display x coords of polygon
+poly_y  =[2.639925068119891e+02	2.845510899182561e+02	1.132295640326975e+02	1.310470027247956e+02	2.338399182561307e+02	3.633589918256131e+02	3.948821525885559e+02	3.722677111716621e+02	2.852363760217983e+02	2.852363760217983e+02];      % display y coords of polygon
 objmask = poly2mask(poly_x, poly_y, size(im_obj, 1), size(im_obj, 2));
-center_x   =5.561948228882833e+02;     % display x coord where center of object should be placed
-bottom_y   =4.394645776566757e+02; 
+center_x  =6.004999999999999e+02;      % display x coord where center of object should be placed
+bottom_y   =7.857861035422343e+02; 
 padding = 64;   % You may want to play with this parameter
 [im_s, mask_s] = alignSource(im_obj, objmask, im_bg, center_x, bottom_y, padding);
 mask_s = im2double(mask_s);
