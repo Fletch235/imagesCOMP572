@@ -22,24 +22,41 @@ what effect you are trying to achieve, before writing any code!
 close('all');    % Close all figures so we start with a clean slate
 
 
-im=imread('https://raw.githubusercontent.com/Fletch235/imagesCOMP572/main/im4.jpg');
+im=imread('https://raw.githubusercontent.com/Fletch235/imagesCOMP572/main/im1.jpg');
 % resize the picture if needed so it is no more than 1000x1000
 filtered = myFilter(im);
 % display the result
 figure(1); montage({im, filtered}, 'Size', [1 2], 'BorderSize', [25 25], 'BackgroundColor', [1 1 1]);
 
-im=imread('https://raw.githubusercontent.com/Fletch235/imagesCOMP572/main/im5.jpg');
+im=imread('https://raw.githubusercontent.com/Fletch235/imagesCOMP572/main/im2.jpg');
 % resize the picture if needed so it is no more than 1000x1000
 filtered = myFilter(im);
 % display the result
 figure(2); montage({im, filtered}, 'Size', [1 2], 'BorderSize', [25 25], 'BackgroundColor', [1 1 1]);
 
-im=imread('https://raw.githubusercontent.com/Fletch235/imagesCOMP572/main/im6.jpg');
+im=imread('https://raw.githubusercontent.com/Fletch235/imagesCOMP572/main/im3.jpg');
 % resize the picture if needed so it is no more than 1000x1000
 filtered = myFilter(im);
 % display the result
 figure(3); montage({im, filtered}, 'Size', [1 2], 'BorderSize', [25 25], 'BackgroundColor', [1 1 1]);
 
+im=imread('https://raw.githubusercontent.com/Fletch235/imagesCOMP572/main/im4.jpg');
+% resize the picture if needed so it is no more than 1000x1000
+filtered = myFilter(im);
+% display the result
+figure(4); montage({im, filtered}, 'Size', [1 2], 'BorderSize', [25 25], 'BackgroundColor', [1 1 1]);
+
+im=imread('https://raw.githubusercontent.com/Fletch235/imagesCOMP572/main/im5.jpg');
+% resize the picture if needed so it is no more than 1000x1000
+filtered = myFilter(im);
+% display the result
+figure(5); montage({im, filtered}, 'Size', [1 2], 'BorderSize', [25 25], 'BackgroundColor', [1 1 1]);
+
+im=imread('https://raw.githubusercontent.com/Fletch235/imagesCOMP572/main/im6.jpg');
+% resize the picture if needed so it is no more than 1000x1000
+filtered = myFilter(im);
+% display the result
+figure(6); montage({im, filtered}, 'Size', [1 2], 'BorderSize', [25 25], 'BackgroundColor', [1 1 1]);
 
 function result = myFilter(im)
     rgb = im2double(im);%convert to double
