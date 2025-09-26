@@ -115,50 +115,68 @@ result2 = cut_and_paste(im_bg, im_s, mask_s);
 figure; montage({im_bg, im_obj, mask_s, result2});
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 % REPEAT ABOVE FOR IMAGE SET 3
-im_bg = im2double(imresize(imread('https://raw.githubusercontent.com/Fletch235/imagesCOMP572/main/wave.jpg'),0.5));        % background image
-im_obj = im2double(imread('https://raw.githubusercontent.com/Fletch235/imagesCOMP572/main/dolphin.jpg'));       % source image
-
-% % Get source region mask (extracted object) from the user
-% %  First draw a polygon on the source image for applying the mask
-
-%[poly_x, poly_y] = getPolygonForMask(im_obj);
-disp("Copy the values of the vectors poly_x and poly_y from the " + ...
-    "Command Window below and hard code them inside your code for " + ...
-    "submission via the Grader website.");
-poly_x   =[81.456403269754702	65.694822888283312	1.856198910081744e+02	5.762329700272481e+02	6.824523160762946e+02	6.653201634877387e+02	3.398092643051772e+02	1.513555858310626e+02	67.750681198910002	67.750681198910002];     % display x coords of polygon
-poly_y  =[2.639925068119891e+02	2.845510899182561e+02	1.132295640326975e+02	1.310470027247956e+02	2.338399182561307e+02	3.633589918256131e+02	3.948821525885559e+02	3.722677111716621e+02	2.852363760217983e+02	2.852363760217983e+02];      % display y coords of polygon
-% Once you have these coordinates, comment out the call to getPolygonForMask() 
-% and hard code the coordinates instead.
-
+im_bg = im2double(imresize(imread('https://raw.githubusercontent.com/Fletch235/imagesCOMP572/main/field.jpg'),1));        % background image
+im_obj = im2double(imresize(imread('https://raw.githubusercontent.com/Fletch235/imagesCOMP572/main/eagle.jpg'),1));       % source image
+poly_x = [1.626959948320413e+03	1.770835917312661e+03	5.685620155038758e+02	5.900607235142118e+02	1.423549095607235e+03];
+poly_y  =[66.701550387596740	9.828772609819121e+02	7.447377260981912e+02	3.230322997416019e+02	58.432816537467602];      % display y coords of polygon
 objmask = poly2mask(poly_x, poly_y, size(im_obj, 1), size(im_obj, 2));
- 
-% % Get the bottom center location on the target image by using the function
-% % getBottomCenterLoc interactively
-
-%[center_x, bottom_y] = getBottomCenterLoc(im_bg);
-disp("Copy the values of center_x and bottom_y from the " + ...
-    "Command Window below and hard code them inside your code for " + ...
-    "submission via the Grader website.");
-center_x  =6.004999999999999e+02;      % display x coord where center of object should be placed
-bottom_y   =7.857861035422343e+02;     % display y coord where bottom of object should be placed
-% Once you have these coordinates, comment out the call to getBottomCenterLoc()
-% and hard code the coordinates instead.
-
+center_x  =1.252074931880109e+03;      % display x coord where center of object should be placed
+bottom_y   =1.073350136239782e+03;     % display y coord where bottom of object should be placed
 padding = 64;   % You may want to play with this parameter
 [im_s, mask_s] = alignSource(im_obj, objmask, im_bg, center_x, bottom_y, padding);
 mask_s = im2double(mask_s);
-
-% % Apply your blending method
 result2 = cut_and_paste(im_bg, im_s, mask_s);
-
-% Display:  target image, source image, mask, then blended result
 figure; montage({im_bg, im_obj, mask_s, result2});
 
 
 % REPEAT ABOVE FOR IMAGE SET 4
-% REPEAT ABOVE FOR IMAGE SET 5
+im_bg = im2double(imresize(imread('https://raw.githubusercontent.com/Fletch235/imagesCOMP572/main/snow.jpg'),1));        % background image
+im_obj = im2double(imresize(imread('https://raw.githubusercontent.com/Fletch235/imagesCOMP572/main/fox.jpg'),0.3));       % source image
+poly_x=[1.552411444141689e+02	2.722901907356948e+02	2.677534059945503e+02	1.525190735694823e+02	1.537288828337874e+02];
+poly_y = [61.141689373297027	63.258855585831071	1.476430517711172e+02	1.319155313351499e+02	61.444141689373318];% display y coords of polygon
+objmask = poly2mask(poly_x, poly_y, size(im_obj, 1), size(im_obj, 2));
+center_x = 3.767028423772609e+02;
+bottom_y = 3.348992248062015e+02;
+padding = 64;   % You may want to play with this parameter
+[im_s, mask_s] = alignSource(im_obj, objmask, im_bg, center_x, bottom_y, padding);
+mask_s = im2double(mask_s);
+result2 = cut_and_paste(im_bg, im_s, mask_s);
+figure; montage({im_bg, im_obj, mask_s, result2});
 
+
+
+% REPEAT ABOVE FOR IMAGE SET 5
+im_bg = im2double(imresize(imread('https://raw.githubusercontent.com/Fletch235/imagesCOMP572/main/snow.jpg'),1));        % background image
+im_obj = im2double(imresize(imread('https://raw.githubusercontent.com/Fletch235/imagesCOMP572/main/fox.jpg'),0.3));       % source image
+[poly_x, poly_y] = getPolygonForMask(im_obj);
+[center_x, bottom_y] = getBottomCenterLoc(im_bg);
+
+%poly_x=[1.552411444141689e+02	2.722901907356948e+02	2.677534059945503e+02	1.525190735694823e+02	1.537288828337874e+02];
+%poly_y = [61.141689373297027	63.258855585831071	1.476430517711172e+02	1.319155313351499e+02	61.444141689373318];% display y coords of polygon
+objmask = poly2mask(poly_x, poly_y, size(im_obj, 1), size(im_obj, 2));
+%center_x = 3.767028423772609e+02;
+%bottom_y = 3.348992248062015e+02;
+padding = 64;   % You may want to play with this parameter
+[im_s, mask_s] = alignSource(im_obj, objmask, im_bg, center_x, bottom_y, padding);
+mask_s = im2double(mask_s);
+result2 = cut_and_paste(im_bg, im_s, mask_s);
+figure; montage({im_bg, im_obj, mask_s, result2});
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % This is your function that implements the blending method
