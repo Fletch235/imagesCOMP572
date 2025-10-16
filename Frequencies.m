@@ -11,8 +11,8 @@ Include anything else about the images you would like to share.
 close('all');    % Close all figures so we start with a clean slate
 
 % read images and convert to single format
-set1_far = im2double(imread('derek.jpg')); 		        % "far" picture
-set1_near = im2double(imread('nutmeg.jpg')); 	    		% "near" picture
+set1_far = im2double(imread('https://raw.githubusercontent.com/Fletch235/imagesCOMP572/main/smithmtn.jpg')); 		        % "far" picture
+set1_near = im2double(imread('https://raw.githubusercontent.com/Fletch235/imagesCOMP572/main/unnamed.jpg')); 	    		% "near" picture
 % (Optional) convert to grayscale
 %set1_far = rgb2gray(set1_far)
 %set1_near = rgb2gray(set1_near);
@@ -22,9 +22,9 @@ set1_near = im2double(imread('nutmeg.jpg')); 	    		% "near" picture
 % points in the two images to establish alignment (e.g., by the eyes).
 % The function performs translation, rotation and scaling to align those 
 % two points in the two images.
-%[x1, y1, x2, y2] = get_points_interactively(set1_near, set1_far);
-x1 = [605.1403 758.9682]; y1 = [287.3709 360.6136];
-x2 = [303.8974 442.5175]; y2 = [348.1681 332.5175];
+[x1, y1, x2, y2] = get_points_interactively(set1_near, set1_far);
+%x1 = [605.1403 758.9682]; y1 = [287.3709 360.6136];
+%x2 = [303.8974 442.5175]; y2 = [348.1681 332.5175];
 [set1_near_aligned, set1_far_aligned] = align_images(set1_near, set1_far, x1, y1, x2, y2);
 
 
