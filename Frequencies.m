@@ -11,8 +11,8 @@ Include anything else about the images you would like to share.
 close('all');    % Close all figures so we start with a clean slate
 
 % read images and convert to single format
-set1_far = im2double(imread('https://raw.githubusercontent.com/Fletch235/imagesCOMP572/main/brick.jpg')); 		        % "far" picture
-set1_near = im2double(imread(['https://raw.githubusercontent.com/Fletch235/imagesCOMP572/main/lake.jpg'])); 	    		% "near" picture
+set1_far = im2double(imread('https://raw.githubusercontent.com/Fletch235/imagesCOMP572/main/brick.JPG')); 		        % "far" picture
+set1_near = im2double(imread(['https://raw.githubusercontent.com/Fletch235/imagesCOMP572/main/lake.JPG'])); 	    		% "near" picture
 % (Optional) convert to grayscale
 %set1_far = rgb2gray(set1_far)
 %set1_near = rgb2gray(set1_near);
@@ -22,9 +22,9 @@ set1_near = im2double(imread(['https://raw.githubusercontent.com/Fletch235/image
 % points in the two images to establish alignment (e.g., by the eyes).
 % The function performs translation, rotation and scaling to align those 
 % two points in the two images.
-[x1, y1, x2, y2] = get_points_interactively(set1_near, set1_far);
-%x1 = [142 428]; y1 = [203 205];
-%x2 = [72 516]; y2 = [293 281];
+%[x1, y1, x2, y2] = get_points_interactively(set1_near, set1_far);
+x1 = [67.791553133514753 3.936369209809264e+03]; y1 = [1.489840599455040e+03 1.489840599455040e+03];
+x2 = [88.391008174386570 3.911649863760218e+03]; y2 = [1.493960490463215e+03 1.423922343324250e+03];
 [set1_near_aligned, set1_far_aligned] = align_images(set1_near, set1_far, x1, y1, x2, y2);
 
 
@@ -37,14 +37,14 @@ cutoff_high = 20.0;   % provide a value for the high-pass filter cutoff frequenc
 set1_hybrid = hybridImage(set1_far_aligned, set1_near_aligned, cutoff_low, cutoff_high);
 
 %% Crop resulting image:  Crop the result to get rid of any unsightly borders areas.
-disp('input crop points (two opposite corners)');
-fig=figure; hold off, imagesc(set1_hybrid), axis image;
-figure(fig)
-[x, y] = ginput(2);  x = round(x); y = round(y);
-close(fig);
+%disp('input crop points (two opposite corners)');
+%fig=figure; hold off, imagesc(set1_hybrid), axis image;
+%figure(fig)
+%[x, y] = ginput(2);  x = round(x); y = round(y);
+%close(fig);
 
-%x = [5 367];
-%y = [52 460];
+x = [119 3980];
+y = [282 2834];
 set1_hybrid = set1_hybrid(min(y):max(y), min(x):max(x), :);
 
 
